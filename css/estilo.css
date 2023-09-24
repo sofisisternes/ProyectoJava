@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+header {
+    background-color: white;
+    text-align: center;
+}
+
+.logo {
+    width: auto;
+    height: 100px;
+    align-items: center;
+    text-transform: uppercase;
+}
+.headerparrafo{
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px;
+}
+
+.catalogo {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "producto1 producto2 producto3"
+        "producto4 producto5 producto6";
+    text-align: center;
+    align-items: center;
+    place-content: center;
+    row-gap: 20px;
+    gap: 3rem;
+    margin: 10px;
+}
+
+.producto1 {
+    grid-area: producto1;
+}
+
+.producto2 {
+    grid-area: producto2;
+}
+
+.producto3 {
+    grid-area: producto3;
+}
+
+.producto4 {
+    grid-area: producto4;
+}
+
+.producto5 {
+    grid-area: producto5;
+}
+
+.producto6 {
+    grid-area: producto6;
+}
+
+article {
+    border: black double 1px;
+    border-radius: 10px;
+    padding: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    border: black solid 1px;
+    font-size: medium;
+    font-weight: bold;
+    width: 100px;
+    transition: opacity 0.3s ease;
+    padding: 5px;
+    margin: 5px;
+}
+
+.cambiopagina {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+
+.cambio {
+    border: black 1px solid;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.redes {
+    text-align: center;
+    margin: 20px;
+}
+
+.redes img {
+    width: auto;
+    height: 30px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.pie img {
+    margin-left: 30px;
+    width: auto;
+    height: 30px;
+}
