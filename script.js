@@ -1,7 +1,8 @@
 function ingresar() {
     while (true) {
-        let pais = prompt("De qué país sos?")
-        if (pais === "Uruguay") {
+        let pais = prompt("De qué país sos?").toUpperCase();
+
+        if (pais === "URUGUAY") {
             alert("Bienvenidx a Clevy Indumentaria");
 
             let elegiopcion = prompt("Elige una opción: \n1- Ver Tienda \n2 - Recibir ofertas \n3 - Contacto");
@@ -11,7 +12,7 @@ function ingresar() {
                     alert("Disfrute de nuestra tienda");
                     break;
                 case "2":
-                    let ofertas = parseInt(prompt("Escribe tu mail"));
+                    let ofertas = prompt("Escribe tu mail");
                     alert("Gracias por suscribirte")
                     break;
                 case "3":
