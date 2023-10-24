@@ -139,3 +139,39 @@ function ingresar() {
     }
 }
 ingresar();
+
+/*productos*/
+const contenedor= document.querySelector(".catalogo")
+for (const producto of Productos) {
+    contenedor.innerHTML += `
+    <article id=${producto.id} class="producto1">
+    <img src=${producto.thumbnail}>
+    <h5>${producto.nombre}</h5>
+    <p>${producto.precio}</p>
+    <button onclick="AgregarCarrito(id)">Comprar</button>
+    </article>`;
+}
+
+/*carrito*/
+const carrito = []
+function AgregarCarrito(id){
+const stock = Productos.find((producto)=>producto.id===id);
+if (stock && !carrito.some((item)=>item.id===id)){
+    carrito.push(stock);
+    localStorage.setItem ("carrito", JSON.stringify(carrito));
+}
+}
+/*mostrar carrito*/
+const carritoFoto = document.getElementById("carrito-foto");
+const carritoDiv = document.querySelector(".carrito");
+
+carritoFoto.addEventListener("click", () => {
+    
+    if (carritoDiv.style.display === "none") {
+        carritoDiv.style.display = "block";
+    } else {
+        carritoDiv.
+        carritoDiv
+style.display = "none";
+    }
+});

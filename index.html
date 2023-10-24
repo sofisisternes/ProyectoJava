@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="script.js"></script>
+    
     <link rel="stylesheet" href="./css/estilo.css">
     <title>Clevy Indumentaria</title>
     <meta name="description" content="Descubre nuestras tendencias y busca tu propio estilo">
@@ -17,7 +17,7 @@
         <section class="headerimagenes">
         <img src="./img/buscar.png" class="buscar" alt="buscar">
         <img src="./img/logo.jpg" class="logo" alt="logo">
-        <img src="./img/carrito.png" class="carrito" alt="carrito">
+        <img src="./img/carrito.png" class="carrito" alt="carrito" id="carrito-foto">
         </section>
         <section>
         <p class="headerparrafo"> ENVIOS GRATIS A PARTIR DE $2500</p>
@@ -25,63 +25,8 @@
     </header>
     <main>
         <h1>TIENDA</h1>
-        <section class="catalogo">
-            <article class="producto1">
-                <img src="./img/1.jpg" alt="producto campera">
-                <h5>Campera Puffer</h5>
-                <p> $3000</p>
-                <a src="#">
-                    <button class="boton__estilo">COMPRAR</button>
-                </a>
-            </article>
-            <article class="producto2">
-                <img src="./img/2.jpg" alt="producto cargo">
-                <h5>Cargo Beige</h5>
-                <p>$1300</p>
-                <a href="#">
-                    <button class="boton__estilo">COMPRAR</button>
-                </a>
-            </article>
-            <article class="producto3">
-                <img src="./img/3.jpg" alt="producto cargo">
-                <h5>Cargo verde</h5>
-                <p> $1300 </p>
-                <a src="#">
-                    <button class="boton__estilo">COMPRAR</button>
-                </a>
-            </article>
-        </section>
-        <section class="catalogo">
-            <article class="producto4">
-                <img src="./img/4.jpg" alt="producto remera">
-                <h5>Remera Los Angeles</h5>
-                <p> $1000</p>
-                <a href="#">
-                    <button>COMPRAR</button>
-                </a>
-            </article>
-            <article class="producto5">
-                <img src="./img/5.jpg" alt="producto remera">
-                <h5>Remera oversize gris</h5>
-                <p>$1100</p>
-                <a href="#">
-                    <button class="boton__estilo">COMPRAR</button>
-                </a>
-            </article>
-            <article class="producto6">
-                <img src="./img/6.jpg" alt="producto remera">
-                <h5>Remera oversize mariposas</h5>
-                <p> $1100 </p>
-                <a href="#">
-                    <button class="boton__estilo">COMPRAR</button>
-                </a>
-            </article>
-        </section>
-        <section class="cambiopagina">
-            <button>
-                <p>VER MAS</p>
-            </button>
-        </section>
+        <article class="catalogo" id="Catalogo">
+        </article>
         <div class="redes">
             <a href="https://www.instagram.com/clevy.indumentaria/" target="_blank">
                 <img src="./img/ig.png">
@@ -98,6 +43,7 @@
         <img src="./img/pagos.png" alt="pagos">
         <p>Aceptamos todos los medios de pago</p>
     </footer>
+    <script defer type="module" src="./script/main.js"></script>
 </body>
 
 </html>
