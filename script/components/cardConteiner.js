@@ -1,11 +1,15 @@
-export const cardConteiner = (props) => {
-    let {Productos} = props;
+import { Card } from "./card.js"
+
+export const cardConteiner = (productos) => {
+
     let section=document.createElement("section")
     section.setAttribute
-    Productos.array.forEach(producto => {
-        const card=Card (producto);
-        section.append (card)
 
-    });
+    productos.forEach(element => {
+        const card = Card(element);
+
+        section.append(card);
+    }); 
+
     return section;
 }
