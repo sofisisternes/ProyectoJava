@@ -1,4 +1,5 @@
 export const cardConteiner = (props) => {
+    /*
     let {Productos} = props;
     let section=document.createElement("section")
     section.setAttribute
@@ -8,4 +9,5 @@ export const cardConteiner = (props) => {
 
     });
     return section;
+    */
 }
