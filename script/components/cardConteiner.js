@@ -3,7 +3,7 @@ import { Card } from "./card.js"
 export const cardConteiner = (productos) => {
 
     let section=document.createElement("section")
-    section.setAttribute
+    section.setAttribute("id","catalogo")
 
     productos.forEach(element => {
         const card = Card(element);

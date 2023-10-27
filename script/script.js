@@ -1,47 +1,4 @@
-const Productos = [
-    {
-        id: 0,
-        nombre: "Campera puffer",
-        color: "Negro",
-        talle: "M,L",
-        precio: 3000,
-    },
-    {
-        id: 1,
-        nombre: "Cargo beige",
-        color: "Beige",
-        talle: "S,M,L",
-        precio: 1300,
-    },
-    {
-        id: 2,
-        nombre: "Cargo verde",
-        color: "Verde",
-        talle: "S,M,L",
-        precio: 1300,
-    },
-    {
-        id: 3,
-        nombre: "Remera Los Angeles",
-        color: "Beige",
-        talle: "UNICO",
-        precio: 1000,
-    },
-    {
-        id: 4,
-        nombre: "Remera oversize",
-        color: "Gris",
-        talle: "UNICO",
-        precio: 1100,
-    },
-    {
-        id: 5,
-        nombre: "Remera mariposas",
-        color: "Beige",
-        talle: "UNICO",
-        precio: 1300,
-    }
-];
+/*
 const sale = [
     {
         id: 8,
@@ -64,114 +21,79 @@ const sale = [
         talle: "UNICO",
         precio: 900,
     }
-];
-function ingresar() {
-    while (true) {
-        let pais = prompt("De qué país sos?").toUpperCase();
+];*/
 
-        if (pais === "URUGUAY") {
-            alert("Bienvenidx a Clevy Indumentaria");
+/* INICIO DE SESION */
+const abrirFormularioImagen = document.getElementById("abrirFormulario");
+const formularioContainer = document.getElementById("formulario-container");
 
-            let elegiopcion = prompt("Elige una opción: \n1- Ver Tienda \n2- Catalogo \n3- SALE \n4- Recibir ofertas \n5- Buscar \n6- Contacto");
+// Función para mostrar y ocultar el formulario
+let formularioVisible = false;
 
-            switch (elegiopcion) {
-                case "1":
-                    alert("Disfrute de nuestra tienda");
-                    break;
-                case "2":
-                    const mostrarProductos = () => {
-                        let descripcion = "\n Catalogo \n";
-                        Productos.forEach((catalogo) => {
-                            descripcion += `\n Nombre: ${catalogo.nombre} \n Precio: $${catalogo.precio} \n Talle: ${catalogo.talle} \n Color: ${catalogo.color}\n`;
-                        });
-                        alert(descripcion);
-                    }
-                    mostrarProductos();
-                    break;
-                case "3":
-                    const porcentajeDescuento = 0.2;
-                    sale.forEach(producto => {
-                        producto.preciosale = Math.round(producto.precio - (producto.precio * porcentajeDescuento))
-                    });
-                    let descripcion = "\n Productos con descuento \n";
-                    sale.forEach((producto) => {
-                        descripcion += `\n Nombre: ${producto.nombre} \n Precio original: $${producto.precio} \n SALE: $${producto.preciosale}\n`;
-                    });
-
-                    alert(descripcion);
-                    porcentajeDescuento();
-                    break;
-                case "4":
-                    let ofertas = prompt("Escribe tu mail");
-                    alert("Gracias por suscribirte")
-                    break;
-                case "5":
-                    const todoslosProductos = Productos.concat(sale);
-                    while (true) {
-                        const busqueda = prompt("Buscar producto");
-
-                        const productosBuscar = todoslosProductos.filter(producto => producto.nombre.toLowerCase().includes(busqueda.toLowerCase()));
-                        let descripcionFiltrada = "\n Productos encontrados \n";
-                        if (productosBuscar.length > 0) {
-                            productosBuscar.forEach((producto) => {
-                                descripcionFiltrada += `\n Nombre: ${producto.nombre} \n Precio: $${producto.precio} \n Talle: ${producto.talle}\n`;
-                            });
-                            alert(descripcionFiltrada);
-                            continue;
-
-                        } else {
-                            alert("No se encontraron productos con ese nombre");
-                            continue;
-                        }
-                    }
-                    break;
-                case "6":
-                    alert("\nWpp: 099984017 \nIg:Clevy.Indumentaria");
-                    break;
-                default:
-                    alert("Opcion no válida");
-                    continue;
-            }
-            break;
-        } else {
-            alert("Lo sentimos, no se puede hacer compras fuera de Uruguay");
-        }
-    }
-}
-ingresar();
-
-/*productos*/
-const contenedor= document.querySelector(".catalogo")
-for (const producto of Productos) {
-    contenedor.innerHTML += `
-    <article id=${producto.id} class="producto1">
-    <img src=${producto.thumbnail}>
-    <h5>${producto.nombre}</h5>
-    <p>${producto.precio}</p>
-    <button onclick="AgregarCarrito(id)">Comprar</button>
-    </article>`;
-}
-
-/*carrito*/
-const carrito = []
-function AgregarCarrito(id){
-const stock = Productos.find((producto)=>producto.id===id);
-if (stock && !carrito.some((item)=>item.id===id)){
-    carrito.push(stock);
-    localStorage.setItem ("carrito", JSON.stringify(carrito));
-}
-}
-/*mostrar carrito*/
-const carritoFoto = document.getElementById("carrito-foto");
-const carritoDiv = document.querySelector(".carrito");
-
-carritoFoto.addEventListener("click", () => {
-    
-    if (carritoDiv.style.display === "none") {
-        carritoDiv.style.display = "block";
+function toggleFormulario() {
+    if (formularioVisible) {
+        formularioContainer.style.display = "none";
     } else {
-        carritoDiv.
-        carritoDiv
-style.display = "none";
+        formularioContainer.style.display = "block";
     }
+    formularioVisible = !formularioVisible;
+}
+
+/*Para hacer que aparezca el form*/
+abrirFormularioImagen.addEventListener("click", function () {
+    toggleFormulario();
 });
+
+const formularioElement = document.getElementById("formulario");
+formularioElement.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const email = formularioElement.querySelector("#email").value;
+    /*Local Storage*/
+    localStorage.setItem("email", email);
+    /* Oculta el formulario */
+    toggleFormulario();
+});
+
+const formularioUsuario = document.querySelector("form");
+formularioUsuario.addEventListener("click", (event) => {
+    event.stopPropagation();
+});
+
+const emailGuardado = localStorage.getItem("email");
+if (emailGuardado) {
+    console.log(emailGuardado)
+    Swal.fire("Bienvenido, " + emailGuardado + "!");
+}
+
+/*BUSQUEDA Y USO DE EVENTOS CLICK*/
+const productosJSON = localStorage.getItem("Productos");
+const Productos = JSON.parse(productosJSON);
+
+
+const buscarButton = document.getElementById("buscarButton");
+
+buscarButton.addEventListener("click", function () {
+    buscarProductos();
+});
+
+
+function buscarProductos() {
+    const busqueda = document.getElementById("busqueda").value.toLowerCase();
+
+    const productosFiltrados = Productos.filter(producto => producto.nombre.toLowerCase().includes(busqueda));
+
+    /* Muestra los productos*/
+    const resultados = document.getElementById("resultados");
+    resultados.innerHTML = "";
+
+    if (productosFiltrados.length > 0) {
+        productosFiltrados.forEach(producto => {
+            const productoHTML = `
+            <img src= ${producto.thumbnail} alt="producto ropa ${producto.nombre}">
+            <p> - ${producto.nombre} - Precio: $${producto.precio}</p>`;
+            resultados.insertAdjacentHTML("beforeend", productoHTML);
+        });
+    } else {
+        resultados.innerHTML = "<p>No se encontraron productos.</p>";
+    }
+}

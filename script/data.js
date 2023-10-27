@@ -1,6 +1,6 @@
 export const Productos = [
     {
-        id: 0,
+        id: "producto",
         nombre: "Campera puffer",
         color: "Negro",
         thumbnail: "../img/1.jpg",
@@ -8,7 +8,7 @@ export const Productos = [
         precio: 3000,
     },
     {
-        id: 1,
+        id: "producto1",
         nombre: "Cargo beige",
         color: "Beige",
         thumbnail: "../img/2.jpg",
@@ -16,7 +16,7 @@ export const Productos = [
         precio: 1300,
     },
     {
-        id: 2,
+        id: "producto2",
         nombre: "Cargo verde",
         color: "Verde",
         thumbnail: "../img/3.jpg",
@@ -24,7 +24,7 @@ export const Productos = [
         precio: 1300,
     },
     {
-        id: 3,
+        id: "producto3",
         nombre: "Remera Los Angeles",
         color: "Beige",
         thumbnail: "../img/4.jpg",
@@ -32,7 +32,7 @@ export const Productos = [
         precio: 1000,
     },
     {
-        id: 4,
+        id: "producto4",
         nombre: "Remera oversize",
         color: "Gris",
         thumbnail: "../img/5.jpg",
@@ -40,7 +40,7 @@ export const Productos = [
         precio: 1100,
     },
     {
-        id: 5,
+        id: "producto5",
         nombre: "Remera mariposas",
         color: "Beige",
         thumbnail: "../img/6.jpg",
@@ -74,3 +74,7 @@ const sale = [
         precio: 900,
     }
 ];
+
+const productosJSON = JSON.stringify(Productos);
+
+localStorage.setItem("Productos", productosJSON);
