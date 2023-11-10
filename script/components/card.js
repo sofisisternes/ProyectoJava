@@ -9,9 +9,9 @@ export const Card = (props) => {
         `
         <img src= ${props.thumbnail} alt="producto ropa ${props.nombre}">
         <h5>${props.nombre}</h5>
-        <p>${props.precio}</p>
+        <p>$${props.precio}</p>
         <p>${props.talle}</p>
-        <button class="comprarButton">COMPRAR</button>
+        <button onclick="agregarAlcarrito('${props.id}')" id="agregar-${props.id}" class="comprarButton">COMPRAR</button>
     `
     return article;
 }
