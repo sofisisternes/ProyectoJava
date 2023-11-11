@@ -99,7 +99,7 @@ function buscarProductos() {
             <p>  ${producto.nombre} </p>
             <p> $${producto.precio}</p>
             <p> ${producto.talle}</p>
-            <button onclick="agregarAlcarrito"('${producto.id}') id="agregar-${producto.id}" class="comprarButton">COMPRAR</button>
+            <button data-product-id="${producto.id}" id="agregar-${producto.id}" class="comprarButton">COMPRAR</button>
             </div>`;
             resultados.insertAdjacentHTML("beforeend", productoHTML);
         });
