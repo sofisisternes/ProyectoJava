@@ -27,7 +27,7 @@ export const Productos = [
         id: "producto3",
         nombre: "Remera Los Angeles",
         color: "Beige",
-        thumbnail: "../img/4.jpg",
+        thumbnail: ".../img/4.jpg",
         talle: "UNICO",
         precio: 1000,
     },

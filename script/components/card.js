@@ -7,7 +7,7 @@ export const Card = (props) => {
     // Inyectando HTML en el elemento article
     article.innerHTML =
         `
-        <img src= ${props.thumbnail} alt="producto ropa ${props.nombre}">
+        <img src= ${props.thumbnail} alt="producto ropa">
         <h5>${props.nombre}</h5>
         <p>$${props.precio}</p>
         <p>${props.talle}</p>
