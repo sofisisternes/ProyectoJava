@@ -105,6 +105,25 @@ function buscarProductos() {
 
 /*carrito*/
 const carrito = []
+function obtenerProductos() {
+    return new Promise((resolve) => {
+      
+      setTimeout(() => {
+        resolve(Productos);
+      }, 1000);
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    obtenerProductos()
+      .then((productosObtenidos) => {
+        localStorage.setItem('Productos', JSON.stringify(productosObtenidos));
+        mostrarCarrito(); 
+      })
+      .catch(() => {
+      });
+  });
+  
 function agregarAlcarrito(id) {
     const catalogo = Productos.find((producto) => producto.id === id);
     if (catalogo) {
