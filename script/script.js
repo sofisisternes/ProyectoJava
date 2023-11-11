@@ -43,7 +43,9 @@ function toggleFormulario() {
 abrirFormularioImagen.addEventListener("click", function () {
     toggleFormulario();
 });
-
+abrirFormularioImagen.addEventListener("touchstart", function () {
+    toggleFormulario();
+});
 const formularioElement = document.getElementById("formulario");
 formularioElement.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -76,6 +78,9 @@ buscarButton.addEventListener("click", function () {
     buscarProductos();
 });
 
+buscarButton.addEventListener("touchstart", function () {
+    buscarProductos();
+});
 
 function buscarProductos() {
     const busqueda = document.getElementById("busqueda").value.toLowerCase();
@@ -150,6 +155,18 @@ function agregarAlcarrito(id) {
         });
     }
 }
+const buttons = document.querySelectorAll('.comprarButton');
+buttons.forEach((button) => {
+    button.addEventListener('click', function(event) {
+        const productId = event.currentTarget.getAttribute('data-product-id');
+        agregarAlcarrito(productId);
+    });
+
+    button.addEventListener('touchstart', function(event) {
+        const productId = event.currentTarget.getAttribute('data-product-id');
+        agregarAlcarrito(productId);
+    });
+});
 
 
 function mostrarCarrito() {
@@ -186,8 +203,13 @@ function mostrarCarrito() {
             const itemId = event.currentTarget.dataset.id;
             eliminarDelCarrito(itemId);
         });
+        trashIcon.addEventListener('touchstart', (event) => {
+            const itemId = event.currentTarget.dataset.id;
+            eliminarDelCarrito(itemId);
+        });
     });
 }
+
 
 function actualizarTotal() {
     const totalElement = document.getElementById('totalCarrito');
