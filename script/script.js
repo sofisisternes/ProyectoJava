@@ -138,7 +138,7 @@ function mostrarCarrito() {
     carritoHtml.innerHTML = '';
 
     const carritoLocalStorage = JSON.parse(localStorage.getItem('carrito'));
-    if (carritoLocalStorage.length === 0) {
+    if (!carritoLocalStorage || carritoLocalStorage.length === 0) {
         carritoHtml.innerHTML = 'Carrito Vacío';
     } else {
         carritoLocalStorage.forEach((item) => {
