@@ -20,7 +20,7 @@ abrirFormularioImagen.addEventListener("click", function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const formularioElement = document.getElementById("formUsuario");
-    
+
     formularioElement.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
         Swal.fire("Bienvenido, " + email + "!");
 
         toggleFormulario();
-    
+
     });
 
     const cerrarFormularioIcon = document.getElementById("cerrarFormulario");
     cerrarFormularioIcon.addEventListener("click", function () {
         toggleFormulario();
     });
-    
+
 });
 
 const formularioUsuario = document.querySelector("form");
@@ -138,7 +138,6 @@ buttons.forEach((button) => {
     });
 });
 
-
 function mostrarCarrito() {
     const carritoHtml = document.querySelector('.carritoBody')
     carritoHtml.innerHTML = '';
@@ -175,7 +174,6 @@ function mostrarCarrito() {
         });
     });
 }
-
 
 function actualizarTotal() {
     const totalElement = document.getElementById('totalCarrito');

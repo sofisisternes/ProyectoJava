@@ -292,6 +292,7 @@ label {
     #catalogo {
         flex-direction: column;
     }
+
     #resultados {
         flex-direction: column;
         margin-top: 50px;
