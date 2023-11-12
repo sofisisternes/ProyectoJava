@@ -1,33 +1,7 @@
-/*
-const sale = [
-    {
-        id: 8,
-        nombre: "Pollera cuero",
-        color: "Rojo",
-        talle: "UNICO",
-        precio: 1000,
-    },
-    {
-        id: 9,
-        nombre: "Remera smile",
-        color: "Negro",
-        talle: "UNICO",
-        precio: 1200,
-    },
-    {
-        id: 10,
-        nombre: "Remera top",
-        color: "Blanco",
-        talle: "UNICO",
-        precio: 900,
-    }
-];*/
-
 /* INICIO DE SESION */
 const abrirFormularioImagen = document.getElementById("abrirFormulario");
 const formularioContainer = document.getElementById("formulario-container");
 
-// Función para mostrar y ocultar el formulario
 let formularioVisible = false;
 
 function toggleFormulario() {
@@ -39,33 +13,39 @@ function toggleFormulario() {
     formularioVisible = !formularioVisible;
 }
 
-/*Para hacer que aparezca el form*/
 abrirFormularioImagen.addEventListener("click", function () {
+
     toggleFormulario();
 });
-abrirFormularioImagen.addEventListener("touchstart", function () {
-    toggleFormulario();
-});
-const formularioElement = document.getElementById("formulario");
-formularioElement.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const email = formularioElement.querySelector("#email").value;
-    /*Local Storage*/
-    localStorage.setItem("email", email);
-    /* Oculta el formulario */
-    toggleFormulario();
+
+document.addEventListener('DOMContentLoaded', function () {
+    const formularioElement = document.getElementById("formUsuario");
+    
+    formularioElement.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const email = formularioElement.querySelector("#email").value;
+
+        localStorage.setItem("email", email);
+        console.log("Email guardado en Local Storage:", email);
+
+        Swal.fire("Bienvenido, " + email + "!");
+
+        toggleFormulario();
+    
+    });
+
+    const cerrarFormularioIcon = document.getElementById("cerrarFormulario");
+    cerrarFormularioIcon.addEventListener("click", function () {
+        toggleFormulario();
+    });
+    
 });
 
 const formularioUsuario = document.querySelector("form");
 formularioUsuario.addEventListener("click", (event) => {
     event.stopPropagation();
 });
-
-const emailGuardado = localStorage.getItem("email");
-if (emailGuardado) {
-    /*  console.log(emailGuardado)
-    Swal.fire("Bienvenido, " + emailGuardado + "!");*/
-}
 
 /*BUSQUEDA Y USO DE EVENTOS CLICK*/
 const productosJSON = localStorage.getItem("Productos");
@@ -78,16 +58,11 @@ buscarButton.addEventListener("click", function () {
     buscarProductos();
 });
 
-buscarButton.addEventListener("touchstart", function () {
-    buscarProductos();
-});
-
 function buscarProductos() {
     const busqueda = document.getElementById("busqueda").value.toLowerCase();
 
     const productosFiltrados = Productos.filter(producto => producto.nombre.toLowerCase().includes(busqueda));
 
-    /* Muestra los productos*/
     const resultados = document.getElementById("resultados");
     resultados.innerHTML = "";
 
@@ -99,7 +74,7 @@ function buscarProductos() {
             <p>  ${producto.nombre} </p>
             <p> $${producto.precio}</p>
             <p> ${producto.talle}</p>
-            <button data-product-id="${producto.id}" id="agregar-${producto.id}" class="comprarButton">COMPRAR</button>
+            <button onclick="agregarAlcarrito"('${producto.id}') id="agregar-${producto.id}" class="comprarButton">COMPRAR</button>
             </div>`;
             resultados.insertAdjacentHTML("beforeend", productoHTML);
         });
@@ -108,27 +83,27 @@ function buscarProductos() {
     }
 }
 
-/*carrito*/
+/*CARRITO*/
 const carrito = []
 function obtenerProductos() {
     return new Promise((resolve) => {
-      
-      setTimeout(() => {
-        resolve(Productos);
-      }, 1000);
+
+        setTimeout(() => {
+            resolve(Productos);
+        }, 1000);
     });
-  }
-  
-  document.addEventListener('DOMContentLoaded', function () {
+}
+
+document.addEventListener('DOMContentLoaded', function () {
     obtenerProductos()
-      .then((productosObtenidos) => {
-        localStorage.setItem('Productos', JSON.stringify(productosObtenidos));
-        mostrarCarrito(); 
-      })
-      .catch(() => {
-      });
-  });
-  
+        .then((productosObtenidos) => {
+            localStorage.setItem('Productos', JSON.stringify(productosObtenidos));
+            mostrarCarrito();
+        })
+        .catch(() => {
+        });
+});
+
 function agregarAlcarrito(id) {
     const catalogo = Productos.find((producto) => producto.id === id);
     if (catalogo) {
@@ -157,12 +132,7 @@ function agregarAlcarrito(id) {
 }
 const buttons = document.querySelectorAll('.comprarButton');
 buttons.forEach((button) => {
-    button.addEventListener('click', function(event) {
-        const productId = event.currentTarget.getAttribute('data-product-id');
-        agregarAlcarrito(productId);
-    });
-
-    button.addEventListener('touchstart', function(event) {
+    button.addEventListener('click', function (event) {
         const productId = event.currentTarget.getAttribute('data-product-id');
         agregarAlcarrito(productId);
     });
@@ -200,10 +170,6 @@ function mostrarCarrito() {
     const trashIcons = document.querySelectorAll('.borrarButton');
     trashIcons.forEach((trashIcon) => {
         trashIcon.addEventListener('click', (event) => {
-            const itemId = event.currentTarget.dataset.id;
-            eliminarDelCarrito(itemId);
-        });
-        trashIcon.addEventListener('touchstart', (event) => {
             const itemId = event.currentTarget.dataset.id;
             eliminarDelCarrito(itemId);
         });

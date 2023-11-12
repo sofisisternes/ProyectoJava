@@ -18,7 +18,7 @@
 <body>
     <header>
         <section class="headerimagenes">
-            <button class="btn btn-primary" id="carritoBoton" type="button" data-bs-toggle="offcanvas"
+            <button class="btn btn-primary carritoBoton" id="carritoBoton" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                 <img src="./img/carrito.png" class="carrito" alt="carrito" id="carrito-foto">
             </button>
@@ -38,16 +38,19 @@
 
             <div id="formulario-container" style="display: none;">
                 <h1>Iniciar Sesión</h1>
-                <form class="formUsuario">
+                <form class="formUsuario" id="formUsuario" autocomplete="on">
+                    <div>
+                        <i class="bi bi-x-circle" id="cerrarFormulario"></i>
+                    </div>
                     <div>
                         <label for="email" style="display: block;">Correo Electrónico:</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" autocomplete="on" required>
                     </div>
                     <div>
                         <label for="password" style="display: block;">Contraseña:</label>
                         <input type="password" id="password" required>
                     </div>
-                    <button type="submit" id="formulario">Iniciar Sesión</button>
+                    <button type="submit" id="btnIniciarSesion">Iniciar Sesión</button>
                 </form>
             </div>
             </div>

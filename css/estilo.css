@@ -11,7 +11,7 @@ header {
 
 .headerimagenes {
     display: grid;
-    grid-template-columns: 3;
+    grid-template-columns: auto auto auto;
     grid-template-areas:
         "carrito logo usuario";
     justify-content: space-between;
@@ -118,7 +118,7 @@ footer {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-#formulario {
+#btnIniciarSesion {
     margin: 10px;
 }
 
@@ -254,8 +254,10 @@ label {
     width: 100%;
 }
 
-.formularioCarrito {
-    width: 300px;
+#formularioCarrito {
+    max-width: 400px;
+    margin: auto;
+    width: 100%;
     padding: 20px;
     border: 1px solid transparent;
     border-radius: 10px;
