@@ -74,7 +74,6 @@ const sale = [
         precio: 900,
     }
 ];
-
-const productosJSON = JSON.stringify(Productos);
+export const productosJSON = JSON.stringify(Productos);
 
 localStorage.setItem("Productos", productosJSON);

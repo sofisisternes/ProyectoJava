@@ -48,19 +48,36 @@ formularioUsuario.addEventListener("click", (event) => {
 });
 
 /*BUSQUEDA Y USO DE EVENTOS CLICK*/
-const productosJSON = localStorage.getItem("Productos");
-const Productos = JSON.parse(productosJSON);
-
+//USO DE FETCH
+import { productosJSON } from './data.js';
 
 const buscarButton = document.getElementById("buscarButton");
+let Productos = JSON.parse(productosJSON);
 
 buscarButton.addEventListener("click", function () {
+    obtenerProductosDesdeJSONLocal().then(() => {; 
     buscarProductos();
 });
+});
+
+async function obtenerProductosDesdeJSONLocal() {
+    try {
+
+        const response = await fetch('./script/data.js');
+
+        const module = await import(`data:text/javascript;base64,${btoa(await response.text())}`);
+        Productos = module.Productos;
+
+        localStorage.setItem('Productos', JSON.stringify(Productos));
+    } catch (error) {
+        console.error('Error al obtener productos:', error);
+        throw error;
+    }
+}
 
 function buscarProductos() {
     const busqueda = document.getElementById("busqueda").value.toLowerCase();
-
+if (Productos) {
     const productosFiltrados = Productos.filter(producto => producto.nombre.toLowerCase().includes(busqueda));
 
     const resultados = document.getElementById("resultados");
@@ -82,7 +99,7 @@ function buscarProductos() {
         resultados.innerHTML = "<p>No se encontraron productos.</p>";
     }
 }
-
+}
 /*CARRITO*/
 const carrito = []
 function obtenerProductos() {
@@ -93,16 +110,6 @@ function obtenerProductos() {
         }, 1000);
     });
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    obtenerProductos()
-        .then((productosObtenidos) => {
-            localStorage.setItem('Productos', JSON.stringify(productosObtenidos));
-            mostrarCarrito();
-        })
-        .catch(() => {
-        });
-});
 
 function agregarAlcarrito(id) {
     const catalogo = Productos.find((producto) => producto.id === id);
